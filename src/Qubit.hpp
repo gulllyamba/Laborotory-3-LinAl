@@ -16,7 +16,7 @@ class Gate {
         Gate(const Gate& other) : gate(other.gate) {}
 
         friend Condition operator*(const Gate& g, const Condition& cond);
-        Gate operator*(const Gate& other) {
+        Gate operator*(const Gate& other) { //тензорное произведение
             int rows = gate.rows() * other.gate.rows();
             int cols = gate.cols() * other.gate.cols();
             MatrixXcd result(rows, cols);
@@ -132,7 +132,7 @@ class Condition {
                 H = H * Gate::Hadamard();
             }
             *this = H * (*this);
-            cnt = sqrt(ket.rows() / cnt);
+            cnt = ceil(3.14 * sqrt(ket.rows() / cnt) / 4);
             Gate Diff = DiffGate();
             int i = 1;
             do{
