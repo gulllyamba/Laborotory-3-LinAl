@@ -5,6 +5,8 @@
 #include <math.h>
 #include <../eigen3/Eigen/Dense>
 
+#define pi 3.1415926535
+
 using namespace Eigen;
 using Complex = std::complex<double>;
 
@@ -132,7 +134,7 @@ class Condition {
                 H = H * Gate::Hadamard();
             }
             *this = H * (*this);
-            cnt = ceil(3.14 * sqrt(ket.rows() / cnt) / 4);
+            cnt = ceil(pi * sqrt(ket.rows() / cnt) / 4);
             Gate Diff = DiffGate();
             int i = 1;
             do{
